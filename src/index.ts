@@ -1,13 +1,8 @@
-const CONFIG = {
-    GREETING: 'Hello',
-    NAME: 'World',
-}
+import { parseDomain } from './modules/sitemap-parser'
 
-const makeGreeting = (greeting: string[]) => {
-    return `${greeting}`
-}
+parseDomain('https://www.gambling.com').then((contents) => {
+    console.log(contents)
+})
 
-const greeting = makeGreeting([CONFIG.GREETING, CONFIG.NAME])
-
-export default { greeting }
+export default { parseDomain }
 export * from './types'
