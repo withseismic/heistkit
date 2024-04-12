@@ -1,33 +1,45 @@
-## Heistkit - The Real Growth Hackers Toolkit
+# Heistkit - The Real Growth Hackers Toolkit
 
 ![GitHub Badge](https://img.shields.io/github/stars/withseismic/heistkit?style=social&label=Star)
 
-## Description
-
-This is a robust starting point for building npm packages with TypeScript support, and `esbuild` for rapidfire scaffolding.
+Heistkit is a toolkit designed for deep diving into website structures through sitemap analysis. It provides essential functions to parse domain-specific sitemaps and extract URLs for further analysis.
 
 ## Installation
+
+Step 1. Star the repository to show your support! ![GitHub Badge](https://img.shields.io/github/stars/withseismic/heistkit?style=social&label=Star)
 
 To install this package, run the following command in your terminal:
 
 ```sh
-npm install heistkit
+npm install withseismic/heistkit
 ```
 
 > **Note:** This package is not yet published to npm. You can install it directly from GitHub by running `npm install withseismic/heistkit`.
+> **Node 17+ Required:** This package uses global fetch, which is only available in Node 17 and later.
 
 ## Usage
 
-### `parseDomain(domainHref: string, flatten: boolean = false)`
+The `heistkit` package provides several utility functions under the `sitemap` module for extracting and parsing sitemap data. Below is a table of available functions:
 
-A quick and dirty way to get all sitemap urls from a domain. Supports multiple and nested sitemaps. Assumes that the domains robots.txt file is accessible and contains a sitemap directive. This function will return an array of objects, each containing a parent sitemap and an array of children sitemaps.
+| Module   | Function Example                                                     | Description                                                                                     |
+|----------|----------------------------------------------------------------------|-------------------------------------------------------------------------------------------------|
+| sitemap  | `await parseDomain('https://www.example.com', false)`                | Parses all sitemap URLs from a given domain, supporting nested and multiple sitemap structures. |
+| sitemap  | `await parseSitemap('https://www.example.com/sitemap.xml')`          | Parses a specific sitemap.xml URL and returns an array of URLs.                                 |
+| sitemap  | `await getSitemaps('https://www.example.com')`                       | Retrieves all sitemap URLs listed in a domain's robots.txt file.                                |
 
-> If robots.txt doesnt contain sitemap entries, you can parse a sitemap.xml url using the `parseSitemap` function, below.
+### Detailed Function Descriptions
+
+#### `parseDomain(domainHref: string, flatten: boolean = false)`
+
+Parses all sitemap URLs from a given domain. It supports nested and multiple sitemap structures, providing a hierarchical or flat list based on the `flatten` flag. The function returns an array of objects containing parent and child URLs.
+
+> **Note:** This assumes the domain has a robots.txt file with sitemap URLs listed. If not, manually grab sitemaps and parse them with the parseSitemap function to retrieve sitemap URLs.
+> **Note:** The `flatten` flag is optional and defaults to `false`. When set to `true`, the function returns a flat list of URLs.
 
 ```typescript
 import { parseDomain } from 'heistkit';
+const results = await parseDomain('https://www.example.com', false);
 
-const results = await parseDomain('https://www.gambling.com', false) // set to true to flatten the results.
 results = [
     {
         "parent": "https://www.gambling.com/sitemap-index.xml",
@@ -51,16 +63,16 @@ results = [
         ]
     }
 ]
+
 ```
 
-### `parseSitemap(sitemapUrl: string)`
+#### `parseSitemap(sitemapUrl: string)`
 
-Parses a sitemap.xml uel and returns an array of urls.
+Parses a specific sitemap.xml URL and returns an array of URLs extracted from the sitemap.
 
 ```typescript
 import { parseSitemap } from 'heistkit';
-
-const results = await parseSitemap('https://www.gambling.com/sitemap.xml')
+const results = await parseSitemap('https://www.example.com/sitemap.xml');
 results = [
     "https://www.gambling.com",
     "https://www.gambling.com/about-us",
@@ -69,23 +81,22 @@ results = [
     "https://www.gambling.com/country-overviews",
     ...
 ]
+
 ```
 
-### `getSitemaps(domainHref: string)`
+#### `getSitemaps(domainHref: string)`
 
-Grabs all sitemap urls from a domain's robots.txt file.
+Retrieves all sitemap URLs listed in a domain's robots.txt file. This function is useful for initial sitemap discovery.
 
 ```typescript
 import { getSitemaps } from 'heistkit';
-
-const results = await getSitemaps('https://www.gambling.com')
+const results = await getSitemaps('https://www.example.com');
 results = [
     "https://www.gambling.com/sitemap-index.xml",
     "https://www.gambling.com/sitemap.xml",
     "https://www.gambling.com/ca/sitemap.xml",
     ...
 ]
-
 ```
 
 ## Contributing
