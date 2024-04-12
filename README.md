@@ -1,5 +1,3 @@
-# @heistkit/core
-
 ## Heistkit - The Real Growth Hackers Toolkit
 
 ![GitHub Badge](https://img.shields.io/github/stars/withseismic/heistkit?style=social&label=Star)
@@ -13,8 +11,10 @@ This is a robust starting point for building npm packages with TypeScript suppor
 To install this package, run the following command in your terminal:
 
 ```sh
-npm install @heistkit/core
+npm install heistkit
 ```
+
+> **Note:** This package is not yet published to npm. You can install it directly from GitHub by running `npm install withseismic/heistkit`.
 
 ## Usage
 

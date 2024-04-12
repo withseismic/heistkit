@@ -66,6 +66,7 @@
         "Doug Silkstone (https://withseismic.com)"
     ],
     "dependencies": {
+        "@heistkit/core": "github:withseismic/heistkit",
         "xml2js": "^0.6.2"
     }
 }

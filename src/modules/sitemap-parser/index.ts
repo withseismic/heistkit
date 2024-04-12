@@ -1,6 +1,5 @@
 import { parseXml } from '../../utility/parse-xml'
 import { SitemapItem } from './sitemap-parser.types'
-
 /**
  * Retrieves the sitemaps from a given domain URL.
  *
@@ -66,6 +65,8 @@ const parseSitemap = async (sitemapUrl: string): Promise<any[]> => {
         return [] // Return an empty array in case of an error
     }
 }
+
+
 
 /**
  * Fetches and organizes the contents of a sitemap from a given domain URL.
