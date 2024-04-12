@@ -1,5 +1,5 @@
 {
-    "name": "@heistkit/core",
+    "name": "heistkit",
     "version": "0.0.1",
     "description": "Heistkit - The Real Growth Hackers Toolkit",
     "main": "dist/index.js",
@@ -34,12 +34,9 @@
         "url": "https://github.com/withseismic/heistkit.git/issues"
     },
     "keywords": [
-        "typescript",
-        "npm",
-        "package",
-        "template",
-        "scaffold",
-        "boilerplate"
+        "growth hacking",
+        "sitemap",
+        "seo"
     ],
     "funding": {
         "type": "gimme",
