@@ -11,10 +11,9 @@ Step 1. Star the repository to show your support! ![GitHub Badge](https://img.sh
 To install this package, run the following command in your terminal:
 
 ```sh
-npm install withseismic/heistkit
+npm install heistkit
 ```
 
-> **Note:** This package is not yet published to npm. You can install it directly from GitHub by running `npm install withseismic/heistkit`.
 > **Node 17+ Required:** This package uses global fetch, which is only available in Node 17 and later.
 
 ## Usage
