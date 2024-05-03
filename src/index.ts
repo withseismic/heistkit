@@ -1,8 +1,8 @@
-import { parseDomain } from './modules/sitemap-parser'
+import { getSitemaps, parseDomain, parseSitemap } from './modules/sitemap-parser'
 
-parseDomain('https://www.gambling.com').then((contents) => {
-    console.log(contents)
-})
+// parseDomain('https://www.gambling.com').then((contents) => {
+//     console.log(contents)
+// })
 
-export default { parseDomain }
+export default { parseDomain, parseSitemap,  getSitemaps }
 export * from './types'
